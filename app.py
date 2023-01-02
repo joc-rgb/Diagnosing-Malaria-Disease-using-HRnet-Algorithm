@@ -5,6 +5,16 @@ from pathlib import Path
 
 import streamlit as st
 
+st.set_page_config(layout="centered", page_icon="🩸", page_title="Malaria Detection System")
+st.title("🩸 Malaria Detection System")
+st.image("https://www.news-medical.net/images/Article_Images/ImageForArticle_22209_16467383903163122.jpg", caption=None)
+st.caption("Malaria is a disease caused by Plasmodium parasites that remains a major threat in global health, affecting 200 million people and causing 400,000 deaths a year. The main species of malaria that affect humans are Plasmodium falciparum and Plasmodium vivax.")
+st.subheader(
+    ":blue[Are you at risk of Malaria disease?]"
+)
+st.info("Always seek the guidance of your doctor or other qualified health professional with any questions you may have regarding your health or a medical condition",icon="ℹ️")
+st.write("##")
+st.write("##")
 class Predict:
     def __init__(self, filename):
         self.learn_inference = load_learner(Path()/filename)
@@ -26,8 +36,18 @@ class Predict:
     def get_prediction(self):
 
         if st.button('Classify'):
+            st.write("##")
+            
             pred, pred_idx, probs = self.learn_inference.predict(self.img)
-            st.write(f'Prediction: {pred}; Probability: {probs[pred_idx]:.04f}')
+            st.write(f'**Prediction: {pred}; Probability: {probs[pred_idx]:.04f}**')
+            if pred=="uninfected":
+                st.markdown("**YOUR RISK FOR MALARIA DISEASE IS **:green[VERY MINIMAL]** AT THIS MOMENT**")
+            else:
+                st.markdown("**YOUR RISK FOR MALARIA DISEASE IS **:red[VERY HIGH]** AT THIS MOMENT.**") 
+                st.markdown("**Please consult a professional doctor :orange[as soon as possible] for clarification and treatment.**")
+                            
+                
+            
         else: 
             st.write(f'Click the button to classify') 
 
