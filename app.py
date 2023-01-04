@@ -41,8 +41,11 @@ class Predict:
             pred, pred_idx, probs = self.learn_inference.predict(self.img)
             st.write(f'**Prediction: {pred}; Probability: {probs[pred_idx]:.04f}**')
             if pred=="uninfected":
+                st.markdown(f'You are {pred} with probability of {probs[pred_idx]:.04f}')
                 st.markdown("**YOUR RISK FOR MALARIA DISEASE IS **:green[VERY MINIMAL]** AT THIS MOMENT**")
+                
             else:
+                st.markdown(f'You are {pred} with probability of {probs[pred_idx]:.04f}')
                 st.markdown("**YOUR RISK FOR MALARIA DISEASE IS **:red[VERY HIGH]** AT THIS MOMENT.**") 
                 st.markdown("**Please consult a professional doctor :orange[as soon as possible] for clarification and treatment.**")
                             
