@@ -22,3 +22,6 @@ This repository contains the implementation of a deep learning model that can di
 - Model Building
 - Save the Model
 - Find prediction
+
+
+### Try it [here](https://joc-rgb-malaria-detection-app-ikuv1q.streamlit.app/)!
