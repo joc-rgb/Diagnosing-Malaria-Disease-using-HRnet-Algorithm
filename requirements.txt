@@ -4,4 +4,4 @@ torch
 torchvision
 fastai
 jupyter
-timm==0.8.1.dev0
+timm==0.8.0.dev0
